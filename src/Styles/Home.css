@@ -1,0 +1,14 @@
+.header{
+    margin-top:5px;
+    text-align: center;
+}
+
+.header > label{
+
+    text-align: center;
+    vertical-align: middle;
+    font-family: Neonderthaw, serif;
+    color:white;
+    font-size: 50px;
+
+}

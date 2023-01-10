@@ -1,0 +1,1 @@
+export const getCategoriesAPICall = "https://the-trivia-api.com/api/categories";
