@@ -1,6 +1,8 @@
 .header{
-    margin-top:5px;
     text-align: center;
+    /* display:flex;
+    flex-direction: row;  */
+    justify-content: center;
 }
 
 .header > label{
@@ -11,4 +13,9 @@
     color:white;
     font-size: 50px;
 
+}
+
+
+.white{
+    color:white;
 }

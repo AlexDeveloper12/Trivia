@@ -1,18 +1,26 @@
 import React, { useEffect } from "react";
+import "../Styles/Categories.css";
 
-function Categories({categoryValues}) {
+function Categories({ categoryValues, onChangeCategory }) {
 
-    var loopCategories = Object.keys(categoryValues).map(function(value,index){
-        <option>{value}</option>
-    })
+    var loopCategories = Object.keys(categoryValues);
 
     return (
-        <div>
-            <select>
-                
-            </select>
 
-        </div>
+        <select onChange={(e) => onChangeCategory(e.target.value)} className="categories-dropdown">
+            {loopCategories.length > 0 ?
+                loopCategories.map(function (index, value) {
+                    return (
+                        <option value={index} >{index}</option>
+                    )
+
+                })
+                : null
+            }
+
+        </select>
+
+
     )
 }
 

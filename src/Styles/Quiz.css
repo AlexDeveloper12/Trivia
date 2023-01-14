@@ -1,0 +1,11 @@
+
+.quiz-question-container {
+    margin-top: 50px;
+    text-align: center;
+    overflow-wrap: break-word;
+}
+
+.quiz-question-container>span {
+    color: white;
+    font-size: 20px;
+}
