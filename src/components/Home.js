@@ -61,6 +61,7 @@ function Home() {
     }
 
     const handleCategoryChange = (categoryChosen) => {
+        resetQuestions();
         setCategory(categoryChosen);
         GetQuestions(categoryChosen);
     }

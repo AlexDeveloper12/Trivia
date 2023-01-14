@@ -32,7 +32,6 @@ function Results({ selectedAnswers, allQuestions }) {
                         <div className="results-container" key={index}>
                             <span className="white" >Question {index + 1}  : Answer: {value}</span>
                             {isCorrectAnswer(selectedAnswers[index], allQuestions[index].correctAnswer)}
-
                         </div>
                     )
                 })
