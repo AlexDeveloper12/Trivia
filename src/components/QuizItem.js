@@ -1,37 +1,24 @@
 import React from "react";
+import propTypes from "prop-types";
 import "../Styles/QuizItem.css";
 
 function QuizItem({ handleQuestionChange, index, value }) {
 
     const chosenValue = (event) => {
         handleQuestionChange(event);
-        //could pass the set array function into this component in order to append to the array and then bring it back up
-        //the parent component
     }
 
     return (
-
-        <div className="parent">
+        <div className="parent" key={index}>
             <span className="white quiz-item" onClick={()=>chosenValue(value)} > {index+1} : {value}</span>
         </div>
-            /* <div className="quiz-all-answers-container">
-
-                <div className="block top-row">
-                    
-                    <span className="quiz-incorrect-answer-two quiz-answer right-answer white" onClick={handleQuestionChange}>{questionData.incorrectAnswers[1]}</span>
-                </div>
-
-                <div className="block bottom-row">
-                    <span className="quiz-incorrect-answer-three quiz-answer left-answer white" onClick={handleQuestionChange}>{questionData.incorrectAnswers[2]}</span>
-                    <span className="quiz-correct-answer quiz-answer right-answer white" onClick={handleQuestionChange}>{questionData.correctAnswer}</span>
-                </div>
-            </div> */
-        
-
     )
-
-
-
 }
 
 export default QuizItem;
+
+QuizItem.propTypes = {
+    handleQuestionChange: propTypes.func,
+    index:propTypes.number,
+    value:propTypes.string
+}

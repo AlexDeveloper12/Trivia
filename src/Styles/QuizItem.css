@@ -1,26 +1,9 @@
-/* 
 
-.block {
-    width: 500px;
-    flex: 0 0 50px;
-    padding: 80px;
-    border: 2px solid red;
-}
-
-/*.quiz-answer-container {
-    width: 30%;
-    margin-top: 164px;
-    flex:0 0 50px;
-    /* display: inline; */
-/* }  */
-
-.quiz-all-answers-container {
-    /* display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    height: 200px;
-    width: 80%; */
-    margin-top: 80px;
+.quiz-item{
+    border:2px solid white;
+    padding:15px;
+    width:400px;
+    background-color: black;
 }
 
 .parent {

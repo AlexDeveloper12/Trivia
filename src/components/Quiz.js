@@ -1,8 +1,9 @@
 import React from "react";
+import propTypes from "prop-types";
 import QuizItem from "./QuizItem";
 import "../Styles/Quiz.css";
 
-function Quiz({ questionData, chosenAnswer, currentQuestionNumber, handleQuestionChange,arrayOfAllQuestionAnswers }) {
+function Quiz({ questionData, currentQuestionNumber, handleQuestionChange,arrayOfAllQuestionAnswers }) {
 
     if (questionData !== null && questionData !== undefined) {
         return (
@@ -33,13 +34,15 @@ function Quiz({ questionData, chosenAnswer, currentQuestionNumber, handleQuestio
                     : null
                 }
             </div>
-
-
-
         )
     }
-
-
 }
 
 export default Quiz;
+
+Quiz.propTypes = {
+    questionData:propTypes.object,
+    currentQuestionNumber:propTypes.number,
+    handleQuestionChange:propTypes.func,
+    arrayOfAllQuestionAnswers:propTypes.array
+}

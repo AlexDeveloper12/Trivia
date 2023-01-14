@@ -1,22 +1,56 @@
 .header{
     text-align: center;
-    /* display:flex;
-    flex-direction: row;  */
     justify-content: center;
-    margin-top: 35px;
+    margin-top: 1%;
 }
 
 .header > label{
-
     text-align: center;
     vertical-align: middle;
     font-family: Neonderthaw, serif;
     color:white;
     font-size: 50px;
-
 }
-
 
 .white{
     color:white;
+}
+
+.categories-loading{
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    vertical-align: middle;
+}
+
+.results-container{
+    text-align: center;   
+    margin-top: 20px;
+}
+
+.btn-reset-container{
+    margin-top: 30px;
+}
+
+.btn-reset{
+    align-items: center;
+    background-color: #06f;
+    border:2px solid #06f;
+    box-sizing: border-box;
+    color:#fff;
+    cursor: pointer;
+    display: inline-flex;
+    fill:#000;
+    font-family: Inter,sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    height: 48px;
+    justify-content: center;
+    letter-spacing: -.8px;
+    line-height: 24px;
+    min-width: 140px;
+    outline: 0;
+    padding: 0 17px;
+    text-align: center;
+    text-decoration: none;
 }

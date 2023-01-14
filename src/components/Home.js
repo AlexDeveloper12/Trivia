@@ -1,11 +1,10 @@
-import axios, { all } from "axios";
+import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { getCategoriesAPICall, getQuestionsByCategoryAPICall } from "../API/Calls";
 import Categories from "./Categories";
 import "../Styles/Home.css";
 import Quiz from "./Quiz";
 import Results from "./Results";
-
 
 function Home() {
 
@@ -16,10 +15,8 @@ function Home() {
     const [chosenCategory, setCategory] = useState("");
     const [currentQuestionNumber, setCurrentQuestionNumber] = useState(0);
     const [currentQuestion, setCurrentQuestion] = useState(null);
-    const [chosenAnswer, setChosenAnswer] = useState("");
     const [arrayOfSelectedAnswers, setArrayOfSelectedAnswers] = useState([]);
     const [arrayOfAllQuestionAnswers, setArrayOfAllQuestionAnswers] = useState([]);
-    const [arrayOfCorrectAnswers, setArrayOfCorrectAnswers] = useState([])
 
     useEffect(() => {
         axios.get(getCategoriesAPICall)
@@ -56,9 +53,6 @@ function Home() {
                     allAnswers.push(response.data[currentQuestionNumber].correctAnswer)
                     var randomArray = shuffleArray(allAnswers);
                     setArrayOfAllQuestionAnswers(randomArray);
-
-
-                    //addCorrectToIns(response.data[currentQuestionNumber],currentQuestionNumber);
                 }
             })
             .catch((error) => {
@@ -75,7 +69,6 @@ function Home() {
 
         if (currentQuestionNumber != 9) {
             setCurrentQuestionNumber(currentQuestionNumber + 1);
-            //setCurrentQuestion(questions[currentQuestionNumber + 1]);
             setCurrentQuestion(questions[currentQuestionNumber + 1]);
             arrayOfSelectedAnswers.push(selectedAnswer);
             setArrayOfSelectedAnswers(arrayOfSelectedAnswers);
@@ -86,12 +79,21 @@ function Home() {
             setArrayOfAllQuestionAnswers(randomArray);
 
         }
+    }
 
+    const resetQuestions = () => {
+        setArrayOfAllQuestionAnswers([]);
+        setCurrentQuestionNumber(0);
+        setArrayOfSelectedAnswers([]);
+        setQuestions([]);
+        setCategory("");
     }
 
     if (loading) {
         return (
-            <div className="white">The categories are loading...</div>
+            <div className="white categories-loading">
+                <span>The categories are loading...</span>
+            </div>
         )
     }
 
@@ -104,35 +106,25 @@ function Home() {
     return (
         <div>
 
-            {questions !== null ?
-                questions.map((value, index) => {
-                    console.log(`${index} -  ${value.correctAnswer}`);
-                })
-
-                : null}
-
             <div className="header">
                 <label>Quiz Wizz</label>
-
                 {categories && <Categories categoryValues={categories} onChangeCategory={handleCategoryChange} />}
-
             </div>
+
             <div>
-                {chosenCategory !== "" && currentQuestion !== null ?
+                {chosenCategory !== "" && currentQuestion !== null && currentQuestionNumber !== 9 ?
                     <Quiz
                         currentQuestionNumber={currentQuestionNumber}
                         questionData={currentQuestion}
-                        chosenAnswer={chosenAnswer}
                         handleQuestionChange={changeQuestion}
                         arrayOfAllQuestionAnswers={arrayOfAllQuestionAnswers}
                     />
                     : null}
             </div>
 
-            {currentQuestionNumber == 9 ?
-                <div style={{ textAlign: 'center' }}>
+            {currentQuestionNumber === 9 ?
+                <div className="results-container">
                     <span className="white">
-
                         You have finished the quiz well done.
                         Below are the answers you gave.
                     </span>
@@ -142,10 +134,16 @@ function Home() {
                             allQuestions={questions}
                         />
                         : null}
+
+                    <div className="btn-reset-container">
+                        <button type="button" onClick={resetQuestions} role="button" className="btn-reset">
+                            Try again
+                        </button>
+
+                    </div>
+
                 </div>
                 : null}
-
-
         </div>
     )
 }
