@@ -12,7 +12,7 @@ function QuizItem({ handleQuestionChange, index, value }) {
     return (
 
         <div className="parent">
-            <span className="white quiz-item" onClick={()=>chosenValue(value)} > {index} : {value}</span>
+            <span className="white quiz-item" onClick={()=>chosenValue(value)} > {index+1} : {value}</span>
         </div>
             /* <div className="quiz-all-answers-container">
 

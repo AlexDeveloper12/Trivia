@@ -5,14 +5,22 @@ import { ImCross } from "react-icons/im";
 
 function Results({ selectedAnswers, allQuestions }) {
 
+    var percentageAnswersCorrect = 0;
+
     const isCorrectAnswer = (chosenAnswer, correctAnswer) => {
 
         if (chosenAnswer == correctAnswer) {
+            percentageAnswersCorrect++;
             return <span className="result-icon checkmark-icon"><GiCheckMark /></span>
         }
         else {
             return <span className="result-icon cross-icon" ><ImCross /></span>
         }
+    }
+
+    const quizScore = (answer, questions) =>{
+        var score = (answer/questions) * 100;
+        return parseFloat(score).toFixed(2);
     }
 
     return (
@@ -23,7 +31,7 @@ function Results({ selectedAnswers, allQuestions }) {
                         <div className="results-container">
                             <span className="white">Question {index + 1}  : Answer: {value}</span>
                             {isCorrectAnswer(selectedAnswers[index], allQuestions[index].correctAnswer)}
-
+                            <span className="white"> You answered {quizScore(percentageAnswersCorrect,selectedAnswers.length)} % of questions correctly.</span>
                         </div>
                     )
                 })
