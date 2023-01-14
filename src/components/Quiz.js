@@ -2,10 +2,10 @@ import React from "react";
 import QuizItem from "./QuizItem";
 import "../Styles/Quiz.css";
 
-function Quiz({ questionData, chosenAnswer, currentQuestionNumber, handleQuestionChange }) {
+function Quiz({ questionData, chosenAnswer, currentQuestionNumber, handleQuestionChange,arrayOfAllQuestionAnswers }) {
 
     if (questionData !== null && questionData !== undefined) {
-
+        console.log(arrayOfAllQuestionAnswers);
         return (
             <div>
                 <div className="quiz-question-container">
@@ -15,8 +15,10 @@ function Quiz({ questionData, chosenAnswer, currentQuestionNumber, handleQuestio
 
                 </div>
 
-                {
-                    questionData.incorrectAnswers.map((value, index) => {
+                 {
+                    arrayOfAllQuestionAnswers?.length > 0 ?
+
+                    arrayOfAllQuestionAnswers.map((value, index) => {
                         return (
                             // <div style={{color:'white'}}>{value}</div>
                             <QuizItem 
@@ -29,8 +31,8 @@ function Quiz({ questionData, chosenAnswer, currentQuestionNumber, handleQuestio
 
                         )
                     })
+                    : null
                 }
-                <div style={{color:'white'}}>{questionData.correctAnswer}</div>
 
 
                 {/* <QuizItem questionData={questionData} chosenAnswer={chosenAnswer} currentQuestionNumber={currentQuestionNumber} handleQuestionChange={handleQuestionChange} /> */}

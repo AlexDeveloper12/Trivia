@@ -1,0 +1,22 @@
+
+.results-container {
+    text-align: center;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.white {
+    color:white;
+}
+
+.result-icon{
+    margin-left: 20px;
+}
+
+.checkmark-icon {
+    color: green;
+}
+
+.cross-icon {
+    color:red;
+}

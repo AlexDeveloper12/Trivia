@@ -4,7 +4,7 @@ import "../Styles/QuizItem.css";
 function QuizItem({ handleQuestionChange, index, value }) {
 
     const chosenValue = (event) => {
-        handleQuestionChange(event.target.value);
+        handleQuestionChange(event);
         //could pass the set array function into this component in order to append to the array and then bring it back up
         //the parent component
     }
@@ -12,7 +12,7 @@ function QuizItem({ handleQuestionChange, index, value }) {
     return (
 
         <div className="parent">
-            <span className="white quiz-item" onClick={(event)=>chosenValue(event)} > {index} : {value}</span>
+            <span className="white quiz-item" onClick={()=>chosenValue(value)} > {index} : {value}</span>
         </div>
             /* <div className="quiz-all-answers-container">
 
