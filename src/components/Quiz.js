@@ -5,12 +5,11 @@ import "../Styles/Quiz.css";
 function Quiz({ questionData, chosenAnswer, currentQuestionNumber, handleQuestionChange,arrayOfAllQuestionAnswers }) {
 
     if (questionData !== null && questionData !== undefined) {
-        console.log(arrayOfAllQuestionAnswers);
         return (
             <div>
                 <div className="quiz-question-container">
                     <span>
-                        Question {currentQuestionNumber} : {questionData.question}
+                        Question {currentQuestionNumber+1} : {questionData.question}
                     </span>
 
                 </div>
@@ -33,9 +32,6 @@ function Quiz({ questionData, chosenAnswer, currentQuestionNumber, handleQuestio
                     })
                     : null
                 }
-
-
-                {/* <QuizItem questionData={questionData} chosenAnswer={chosenAnswer} currentQuestionNumber={currentQuestionNumber} handleQuestionChange={handleQuestionChange} /> */}
             </div>
 
 

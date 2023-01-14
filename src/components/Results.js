@@ -6,10 +6,6 @@ import { ImCross } from "react-icons/im";
 function Results({ selectedAnswers, allQuestions }) {
 
     const isCorrectAnswer = (chosenAnswer, correctAnswer) => {
-        console.log('chosenAnswer')
-        console.log(chosenAnswer)
-        console.log('correctAnswer')
-        console.log(correctAnswer)
 
         if (chosenAnswer == correctAnswer) {
             return <span className="result-icon checkmark-icon"><GiCheckMark /></span>
@@ -32,17 +28,6 @@ function Results({ selectedAnswers, allQuestions }) {
                     )
                 })
             }
-
-            {allQuestions.map((value, index) => {
-                return (
-                    <div>
-                        {value.correctAnswer};
-                    </div>
-                )
-            })}
-
-
-
         </div>
 
     )

@@ -14,16 +14,16 @@ function Home() {
     const [error, setError] = useState("");
     const [questions, setQuestions] = useState([]);
     const [chosenCategory, setCategory] = useState("");
-    const [currentQuestionNumber, setCurrentQuestionNumber] = useState(1);
+    const [currentQuestionNumber, setCurrentQuestionNumber] = useState(0);
     const [currentQuestion, setCurrentQuestion] = useState(null);
     const [chosenAnswer, setChosenAnswer] = useState("");
     const [arrayOfSelectedAnswers, setArrayOfSelectedAnswers] = useState([]);
     const [arrayOfAllQuestionAnswers, setArrayOfAllQuestionAnswers] = useState([]);
+    const [arrayOfCorrectAnswers, setArrayOfCorrectAnswers] = useState([])
 
     useEffect(() => {
         axios.get(getCategoriesAPICall)
             .then(response => {
-                console.log(response.data);
                 setCategories(response.data);
                 setLoading(false);
             })
@@ -53,12 +53,12 @@ function Home() {
                     setCurrentQuestion(response.data[currentQuestionNumber]);
 
                     var allAnswers = response.data[currentQuestionNumber].incorrectAnswers;
-                    //allAnswers.push('hello');
                     allAnswers.push(response.data[currentQuestionNumber].correctAnswer)
                     var randomArray = shuffleArray(allAnswers);
                     setArrayOfAllQuestionAnswers(randomArray);
 
 
+                    //addCorrectToIns(response.data[currentQuestionNumber],currentQuestionNumber);
                 }
             })
             .catch((error) => {
@@ -72,11 +72,10 @@ function Home() {
     }
 
     const changeQuestion = (selectedAnswer) => {
-        console.log('selectedAnswer');
-        console.log(selectedAnswer);
-        var tempArray = []
+
         if (currentQuestionNumber != 9) {
             setCurrentQuestionNumber(currentQuestionNumber + 1);
+            //setCurrentQuestion(questions[currentQuestionNumber + 1]);
             setCurrentQuestion(questions[currentQuestionNumber + 1]);
             arrayOfSelectedAnswers.push(selectedAnswer);
             setArrayOfSelectedAnswers(arrayOfSelectedAnswers);
@@ -87,7 +86,6 @@ function Home() {
             setArrayOfAllQuestionAnswers(randomArray);
 
         }
-        console.log(arrayOfSelectedAnswers);
 
     }
 
@@ -105,6 +103,13 @@ function Home() {
 
     return (
         <div>
+
+            {questions !== null ?
+                questions.map((value, index) => {
+                    console.log(`${index} -  ${value.correctAnswer}`);
+                })
+
+                : null}
 
             <div className="header">
                 <label>Quiz Wizz</label>
@@ -131,7 +136,7 @@ function Home() {
                         You have finished the quiz well done.
                         Below are the answers you gave.
                     </span>
-                    {arrayOfSelectedAnswers.length > 0 && arrayOfSelectedAnswers.length === 8 ?
+                    {arrayOfSelectedAnswers.length > 0 ?
                         <Results
                             selectedAnswers={arrayOfSelectedAnswers}
                             allQuestions={questions}
