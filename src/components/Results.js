@@ -25,23 +25,38 @@ function Results({ selectedAnswers, allQuestions }) {
     }
 
     return (
-        <div>
-            {
-                selectedAnswers.map((value, index) => {
-                    return (
-                        <div className="results-container" key={index}>
-                            <span className="white" >Question {index + 1}  : Answer: {value}</span>
-                            {isCorrectAnswer(selectedAnswers[index], allQuestions[index].correctAnswer)}
-                        </div>
-                    )
-                })
+        <>
+            <table className="results-table">
+                <thead>
+                    <tr>
+                        <th className="white">Question number</th>
+                        <th className="white">Your Answer</th>
+                        <th className="white">Correct Answer</th>
+                        <th className="white">Correct/Incorrect</th>
+                    </tr>
+                </thead>
+                <tbody>
 
-            }
+
+                    {selectedAnswers.map((value, index) => {
+                        return (
+                            <tr>
+                                <td><span>Question {index + 1}</span></td>
+                                <td> <span>{value}</span></td>
+                                <td> <span>{allQuestions[index].correctAnswer}</span></td>
+                                <td>{isCorrectAnswer(selectedAnswers[index], allQuestions[index].correctAnswer)}</td>
+                            </tr>
+                        )
+                    })
+                    }
+                </tbody>
+            </table>
+
+
             <div className="percentage-answered">
                 <span className="white"> You answered {quizScore(percentageAnswersCorrect, selectedAnswers.length)} of questions correctly.</span>
             </div>
-
-        </div>
+            </>
     )
 }
 

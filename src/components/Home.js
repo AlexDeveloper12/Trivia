@@ -131,8 +131,7 @@ function Home() {
             {currentQuestionNumber === 9 ?
                 <div className="results-container">
                     <span className="white">
-                        You have finished the quiz well done.
-                        Below are the answers you gave.
+                        Quiz Results
                     </span>
                     {arrayOfSelectedAnswers.length > 0 ?
                         <Results
