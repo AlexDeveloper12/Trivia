@@ -21,11 +21,14 @@ function Home() {
     useEffect(() => {
         axios.get(getCategoriesAPICall)
             .then(response => {
-                setCategories(response.data);
-                setLoading(false);
+                if (response !== null && response !== undefined) {
+                    setCategories(response.data);
+                    setLoading(false);
+                }
             })
             .catch(error => {
                 console.log(`GetCategories error: ${error}`);
+                setError(error)
             })
     }, []);
 
@@ -45,7 +48,7 @@ function Home() {
         axios.get(`${getQuestionsByCategoryAPICall}${category}&limit=10`)
             .then((response) => {
                 if (response !== undefined && response !== null) {
-
+                    console.log(`${getQuestionsByCategoryAPICall}${category}&limit=10`)
                     setQuestions(response.data);
                     setCurrentQuestion(response.data[currentQuestionNumber]);
 
@@ -61,6 +64,7 @@ function Home() {
     }
 
     const handleCategoryChange = (categoryChosen) => {
+
         resetQuestions();
         setCategory(categoryChosen);
         GetQuestions(categoryChosen);
@@ -83,11 +87,12 @@ function Home() {
     }
 
     const resetQuestions = () => {
+        setCategory("-1");
         setArrayOfAllQuestionAnswers([]);
         setCurrentQuestionNumber(0);
         setArrayOfSelectedAnswers([]);
         setQuestions([]);
-        setCategory("");
+
     }
 
     if (loading) {
@@ -113,7 +118,7 @@ function Home() {
             </div>
 
             <div>
-                {chosenCategory !== "" && currentQuestion !== null && currentQuestionNumber !== 9 ?
+                {chosenCategory !== "-1" && currentQuestionNumber !== 9 ?
                     <Quiz
                         currentQuestionNumber={currentQuestionNumber}
                         questionData={currentQuestion}

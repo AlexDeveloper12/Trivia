@@ -26,6 +26,8 @@ function Quiz({ questionData, currentQuestionNumber, handleQuestionChange,arrayO
                                 index={index}
                                 value={value}
                                 correctAnswer={questionData.correctAnswer}
+                                currentQuestionNumber={currentQuestionNumber}
+                                key={index}
                                 />
 
 
