@@ -1,7 +1,7 @@
 
 @font-face {
   font-family: 'Neonderthaw';
-  src: local('Neonderthaw'), url('/Users/alex/Desktop/Trivia/src/fonts/Neonderthaw-Regular.ttf') format('truetype');
+  src: local('Neonderthaw'), url('youwillneedtochangethis') format('truetype');
 }
 
 body {
@@ -11,7 +11,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-image: url("/Users/alex/Desktop/Trivia/neonbackground.jpg");
+  background-image: url("you will need to change this location");
   background-repeat: no-repeat;
   background-size: cover;
 }

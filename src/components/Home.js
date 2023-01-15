@@ -130,9 +130,9 @@ function Home() {
 
             {currentQuestionNumber === 9 ?
                 <div className="results-container">
-                    <span className="white">
+                    <label className="white">
                         Quiz Results
-                    </span>
+                    </label>
                     {arrayOfSelectedAnswers.length > 0 ?
                         <Results
                             selectedAnswers={arrayOfSelectedAnswers}
